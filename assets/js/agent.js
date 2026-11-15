@@ -1,26 +1,112 @@
 /* ==========================================================================
-   agent.js — "ask about my work".
-   Loads nothing and shows nothing unless a live endpoint answers.
-   The model key lives server-side; this file never sees it.
+   agent.js — the floating "ask about my work" window.
+
+   The window stays hidden until a live endpoint answers a health check, so the
+   public site never shows a dead widget. The model key lives server-side; this
+   file never sees it.
    ========================================================================== */
 
 (function () {
   "use strict";
 
-  var panel = document.querySelector("[data-agent-endpoint]");
-  if (!panel) return;
+  var root = document.querySelector("[data-agent-endpoint]");
+  if (!root) return;
 
-  var endpoint = (panel.getAttribute("data-agent-endpoint") || "").trim();
-  var log = panel.querySelector(".agent__log");
-  var form = panel.querySelector(".agent__form");
-  var input = panel.querySelector("#agent-q");
-  var statusEl = panel.querySelector("[data-agent-status]");
+  var endpoint = (root.getAttribute("data-agent-endpoint") || "").trim();
+  var panel = root.querySelector(".assistant__panel");
+  var launch = root.querySelector("[data-agent-launch]");
+  var closeBtn = root.querySelector("[data-agent-close]");
+  var log = root.querySelector(".agent__log");
+  var form = root.querySelector(".agent__form");
+  var input = root.querySelector("#agent-q");
+  var statusEl = root.querySelector("[data-agent-status]");
   var submit = form ? form.querySelector('button[type="submit"]') : null;
+  var openers = document.querySelectorAll("[data-agent-open]");
 
-  if (!log || !form || !input || !endpoint) return;
+  if (!panel || !launch || !log || !form || !input || !endpoint) return;
 
   var history = [];
   var busy = false;
+  var open = false;
+  var lastFocus = null;
+
+  /* --------------------------------------------------------------- open/close */
+
+  function focusable() {
+    var nodes = panel.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    return Array.prototype.filter.call(nodes, function (el) {
+      return el.offsetParent !== null || el === document.activeElement;
+    });
+  }
+
+  function openWindow() {
+    if (open) return;
+    open = true;
+    lastFocus = document.activeElement;
+    root.classList.add("is-open");
+    panel.removeAttribute("inert");
+    panel.setAttribute("aria-hidden", "false");
+    launch.setAttribute("aria-expanded", "true");
+    input.focus({ preventScroll: true });
+  }
+
+  function closeWindow() {
+    if (!open) return;
+    open = false;
+    root.classList.remove("is-open");
+    panel.setAttribute("inert", "");
+    panel.setAttribute("aria-hidden", "true");
+    launch.setAttribute("aria-expanded", "false");
+
+    var back =
+      lastFocus && lastFocus !== document.body && lastFocus.isConnected ? lastFocus : launch;
+    if (typeof back.focus === "function") back.focus({ preventScroll: true });
+  }
+
+  launch.addEventListener("click", function () {
+    if (open) closeWindow();
+    else openWindow();
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeWindow);
+
+  Array.prototype.forEach.call(openers, function (btn) {
+    btn.addEventListener("click", openWindow);
+  });
+
+  document.addEventListener("pointerdown", function (e) {
+    if (open && !root.contains(e.target)) closeWindow();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (!open) return;
+
+    if (e.key === "Escape" || e.key === "Esc") {
+      e.preventDefault();
+      closeWindow();
+      return;
+    }
+
+    if (e.key !== "Tab") return;
+
+    var items = focusable();
+    if (!items.length) return;
+
+    var first = items[0];
+    var last = items[items.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  /* ------------------------------------------------------------------- chat */
 
   function setStatus(text) {
     if (statusEl) statusEl.textContent = text || "";
@@ -69,7 +155,6 @@
     addMessage(text, "user");
     history.push({ role: "user", content: text });
     input.value = "";
-    setStatus("");
     begin();
 
     var typing = addTyping();
@@ -118,7 +203,7 @@
       history.pop();
     } finally {
       end();
-      input.focus();
+      if (open) input.focus({ preventScroll: true });
     }
   }
 
@@ -127,21 +212,24 @@
     ask(input.value);
   });
 
-  Array.prototype.forEach.call(panel.querySelectorAll("[data-ask]"), function (btn) {
+  Array.prototype.forEach.call(root.querySelectorAll("[data-ask]"), function (btn) {
     btn.addEventListener("click", function () {
+      openWindow();
       ask(btn.getAttribute("data-ask") || "");
     });
   });
 
-  /* Health check: only reveal the panel if the function is actually deployed.
-     A 404 or a failed request leaves the section hidden, so the live site never
-     shows a dead widget. */
+  /* Health check. A 404 or a failed request leaves everything hidden, so the
+     site never shows a widget that cannot answer. GET answers 200 with {ok:true}. */
   fetch(endpoint, { method: "GET", headers: { Accept: "application/json" } })
     .then(function (r) {
-      // the handler answers 405 for GET; anything but a network/proxy error means it exists
       if (r.status === 404 || r.status === 0) return null;
-      panel.hidden = false;
-      setStatus("Answers are generated from a single notes file. It can be wrong — verify anything you rely on.");
+
+      root.hidden = false;
+      Array.prototype.forEach.call(openers, function (btn) {
+        btn.hidden = false;
+      });
+      setStatus("Generated from one notes file. It can be wrong — verify anything you rely on.");
       return true;
     })
     .catch(function () {

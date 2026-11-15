@@ -90,11 +90,18 @@ module.exports = async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", origin);
     res.setHeader("Vary", "Origin");
   }
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   if (req.method === "OPTIONS") {
     res.status(204).end();
+    return;
+  }
+
+  // Cheap liveness probe for the site: no model call, no key, no rate limit.
+  if (req.method === "GET" || req.method === "HEAD") {
+    res.setHeader("Cache-Control", "no-store");
+    res.status(200).json({ ok: true });
     return;
   }
 
