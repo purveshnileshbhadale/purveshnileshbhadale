@@ -1,155 +1,204 @@
-# purveshnileshbhadale.github.io
+# 🚀 Purvesh Nilesh Bhadale
 
-Personal site of **Purvesh Nilesh Bhadale** — live at
-<https://purveshnileshbhadale.github.io/>.
+[![Typing SVG](https://camo.githubusercontent.com/634ae4c4fccf697b6ef762a52c4b226822c1dd3ff728657fadf12d64b2ac9a44/68747470733a2f2f726561646d652d747970696e672d7376672e6865726f6b756170702e636f6d3f666f6e743d506f7070696e732673697a653d3234266475726174696f6e3d333030302670617573653d3130303026636f6c6f723d3030433835332663656e7465723d74727565267643656e7465723d747275652677696474683d383530266c696e65733d466f756e6465722b6f662b423243536f6c7574696f6e3b41492b4c6561726e65723b41492b446576656c6f7065723b4275696c64696e672b4a41525649532b41493b436f2d466f756e6465722b47414d45525a4855423b4275696c64696e672b56436f726544423b4d616b696e672b41492b436f6e74656e742b43726561746f72)](https://git.io/typing-svg)
 
-Class 12 (PCM) student in Pune, India, building AI tools for students. This site is the
-evidence: four featured projects, smaller builds, a competition entry, and a timeline.
+[ ![](https://camo.githubusercontent.com/9c6329d6c724307615a1bfff3b9d04bbfb9f47f2185987cd8af574f98def8345/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f6c6c6f776572732f6f6d7075766568656e73686f756c646172646534323f7374796c653d666f722d7468652d6261646765)](https://github.com/purveshnileshbhadale) [ ![](https://camo.githubusercontent.vis/25a396b9954284afcee450ff3eb957b8973da1f29c58f88799a460e6043f115c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6f6d7075766568656e73686f756c646172646534323f7374796c653d666f722d7468652d6261646765)](https://github.com/purveshnileshbhadale?tab=followers)
 
-## How it's built
+---
 
-Hand-written, no framework, no build step, no dependencies.
+# 🤖 About Me
 
-```
-index.html            the site
-404.html              GitHub Pages fallback
-assets/css/style.css  the whole design system (~1,000 lines, unminified)
-assets/js/site.js     theme, command palette, active nav, reveals (~7 KB)
-assets/fonts/         self-hosted woff2, latin subset (116 KB total)
-assets/img/favicon.svg
-knowledge.md          source of truth for the planned "ask about Purvesh" agent
-```
+[](#-about-me)
 
-- **Type:** Instrument Serif (display) + IBM Plex Sans (text) + IBM Plex Mono (labels).
-  Self-hosted, `font-display: swap`, two faces preloaded.
-- **Theme:** light and dark, follows the system by default, remembers a manual choice,
-  applied before first paint so there's no flash.
-- **Palette:** `⌘K` / `Ctrl K` / `/` opens a keyboard-driven jump menu.
-- **Accessibility:** skip link, landmarks, visible focus rings, AA contrast, reduced-motion
-  support, no keyboard traps.
-- **No analytics, no cookies, no third-party requests.**
+- 🏢 **Founder & Developer** - Building innovative software solutions
+- 🤖 **AI Enthusiast** - Exploring the limits of artificial intelligence
+- 💻 **Full-Stack Developer** - Specializing in modern web technologies
+- 🎓 **Student** - Continuously learning and building
 
-## Deploying
+[](#ai-learner--full-stack-developer--founder--b2csolution)
 
-Push to `main`. GitHub Pages serves the repo root; no workflow needed.
+Building scalable applications, AI systems, and modern software products.
 
-```bash
-git add -A
-git commit -m "…"
-git push
-```
+---
 
-## Google Search
+# 🔥 Current Focus
 
-Everything a crawler needs is already in place:
-
-| File | Purpose |
-| --- | --- |
-| `robots.txt` | allows everything, points to the sitemap |
-| `sitemap.xml` | the single canonical URL, with `lastmod` |
-| `<link rel="canonical">` | resolves duplicate/preview URLs to one address |
-| `index, follow, max-image-preview:large` | allows full-size image previews in results |
-| JSON-LD `@graph` | `Person` + `ProfilePage` + `WebSite`, so Google can build a knowledge panel |
-| `assets/img/og-cover.jpg` | 1200×630 social card with portrait, source in `assets/og/og-card.html` |
-
-### Steps to submit
-
-1. **Verify ownership.** Go to <https://search.google.com/search-console> → *Add property*
-   → *URL prefix* → `https://purveshnileshbhadale.github.io/`.
-   Choose the **HTML tag** method, copy the token, and paste it into the commented
-   `google-site-verification` line in `index.html`. Commit and push, then click **Verify**.
-   (The *HTML file* method also works: drop the file it gives you in the repo root.)
-2. **Submit the sitemap.** In Search Console → *Sitemaps* → enter `sitemap.xml` → Submit.
-3. **Request indexing.** *URL Inspection* → paste the homepage → *Request indexing*.
-   First crawl usually takes a few days; ranking takes weeks.
-4. **Check for issues** under *Page indexing* after 48 hours.
-
-### After the first deploy
-
-- Re-submit the sitemap only when the URL changes; `lastmod` in `sitemap.xml` should be
-  bumped when content changes (Google ignores `changefreq`/`priority`, but they do no harm).
-- If you later buy a custom domain, update `canonical`, `og:url`, `og:image`, the JSON-LD
-  `@id`s, `robots.txt` and `sitemap.xml` together — a mismatch splits ranking signals.
-
-## Theme in a URL
-
-`?theme=light` or `?theme=dark` forces a mode without touching the visitor's saved
-preference. Useful for screenshots, OG cards, and sharing a specific look.
-
-## Custom domain
-
-To move off `*.github.io`, buy a domain and point it here:
-
-1. Create a file named `CNAME` in the repo root containing only the bare domain, e.g.
-   `purveshbhadale.com`.
-2. At the DNS provider add the records GitHub documents:
-   - apex (`@`): four `A` records → `185.199.108.153`, `185.199.109.153`,
-     `185.199.110.153`, `185.199.111.153`
-   - `www`: `CNAME` → `purveshnileshbhadale.github.io`
-3. In **Settings → Pages**, set the custom domain and tick **Enforce HTTPS**
-   (the certificate is issued after DNS resolves, usually within an hour).
-
-## The "ask about Purvesh" agent — live
-
-GitHub Pages cannot run server-side code, and a key in the browser is readable by
-anyone, so the site stays static on Pages and the model is called only from
-`api/chat.js`, deployed as a Vercel function. The key lives in Vercel's environment
-and never touches the repository.
+[](#-current-focus)
 
 ```
-api/chat.js        POST /api/chat · reads knowledge.md · rate limited · CORS pinned
-assets/js/agent.js reveals the panel only after the endpoint answers a health check
-knowledge.md       the only context the model gets (built from his application documents)
+Company: Personal Projects
+
+Currently Building:
+  - AI-powered tools
+  - Web applications
+  - Open source contributions
+
+Learning:
+  - System Design
+  - Cloud Infrastructure
+  - Advanced AI
+
+Goals for 2027:
+  - Launch major projects
+  - Scale open source work
+  - Build portfolio pieces
 ```
 
-- Endpoint: `https://purveshnileshbhadale.vercel.app/api/chat`
-- Provider: OpenRouter (`OPENROUTER_API_KEY`, stored encrypted in Vercel Production).
-- Model: free-tier only (`OPENROUTER_MODEL`, comma-separated fallback list — free pools
-  rate-limit upstream in waves, so the function walks the list until one answers).
-  Default: `nvidia/nemotron-3.5-lightning:free,google/gemma-4-31b-it:free,openrouter/free`.
-- The Vercel deployment also serves the site, but sends `X-Robots-Tag: noindex` so only
-  the GitHub Pages URL ranks.
+---
 
-### Changing it
+# 🏗️ System Architecture
 
-1. `knowledge.md` is the single source of truth — edit it, then redeploy:
-   ```bash
-   npx vercel --prod
-   ```
-2. To rotate the model key: `vercel env rm OPENROUTER_API_KEY production`, then
-   `vercel env add OPENROUTER_API_KEY production` and redeploy. Never commit a key —
-   `.gitignore` already covers `.env*` and `.vercel/`.
-3. The endpoint URL lives in one place in `index.html`:
-   ```html
-   <div class="agent" data-agent-endpoint="https://purveshnileshbhadale.vercel.app/api/chat" hidden>
-   ```
-   If the function is ever down, the panel hides itself again — the public site never
-   shows a dead widget.
+[](#️-system-architecture)
 
-### Guardrails that are in place
+```graph TD
+    A[Frontend] --> B[Backend]
+    B --> C[Database]
+    B --> D[API Services]
+    C --> E[Storage]
+```
 
-- Answers only from `knowledge.md`; anything else returns "I don't know".
-- Private facts (phone, address, date of birth, family, passport, funding) are not in
-  `knowledge.md` at all, and the prompt refuses them on principle.
-- 500-character questions, 6-turn history, 260 output tokens.
-- 8 requests per 5 minutes per IP (in-memory, per instance — move to Upstash if traffic grows).
-- 20-second upstream timeout, `no-store` responses, error details logged server-side only.
-- OpenRouter free tier: 50 requests/day on free models — enough for a portfolio, not
-  for traffic. Watch the usage dashboard before an application deadline week.
+Loading
 
-## Remaining TODOs
+---
 
-Visible on the site by design — 25 markers, all found by searching `TODO` in `index.html`:
+# 🛠 Tech Stack
 
-- **Identity (2):** confirm the hero line; confirm the role line (Founder / Co-Founder, B2C Solution Tech Co.)
-- **About (1):** one pass so the paragraph sounds like him, not like a website
-- **Li-Fi (3):** parts list (emitter, receiver, amplification); photo / video / circuit diagram; what broke and what he'd do differently
-- **VEDA (2):** screenshot or demo plus one real result from a real query; what the knowledge graph changed about how he reads papers
-- **SCHOLARS (4):** confirm the "Built" description matches the repo; link or exact count for the dataset; live link, screenshot, real test users; the "the hard part was the data" line
-- **VAYU (3):** which features work today vs. are stubs; 60-second demo video; what memory does to latency / why plugins were harder than the model
-- **Credits & repos (4):** repo links for Deeps Guruwariya and DeepHelper; Claurst upstream link; one line on what he changed in DeepHelper
-- **Status (3):** repo link and current status for the remaining builds (SmartPath AI, GamerzHub, one more)
-- **Writing (1):** decide whether to list the two IJRPR papers (July 2026) with the venue named honestly, or leave them out
-- **Timeline (2):** start month for each entry; add the final shortlist only when it's decided
+[](#-tech-stack)
 
-Plus one non-visible item: plug in the chatbot endpoint (see below).
+## Languages
+
+[](#languages)
+
+[![Python](https://camo.githubusercontent.com/6b9fbb82a7aac4b04f28400813eac786dce2ff63025c1452b3cbf9b196c69af7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d3337373641423f7374796c653d666f722d7468652d6261646765266c6f676f3d707974686f6e266c6f676f436f6c6f723d7768697465)](https://camo.githubusercontent.com/6b9fbb82a7aac4b04f28400813eac786dce2ff63025c1452b3cbf9b196c69af7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d3337373641423f7374796c653d666f722d7468652d6261646765266c6f676f3d707974686f6e266c6f676f436f6c6f723d7768697465)
+
+[![JavaScript](https://camo.githubusercontent.com/5e8b9a1a06fdf3e57c43572ab7f31805536fc669b324e40b08bf13395b150d0b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6176615363726970742d4637444631453f7374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074)](https://camo.githubusercontent.com/5e8b9a1a06fdf3e57c43572ab7f31805536fc669b324e40b08bf13395b150d0b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6176615363726970742d4637444631453f7374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074)
+
+[![TypeScript](https://camo.githubusercontent.us/0bf3a835ebb2f01e715e613379cc2dbe269ce51ada33925e922cd70e094e9452/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970655363726970742d3331373843363f7374796c653d666f722d7468652d6261646765266c6f676f3d74797065736372697074)](https://camo.githubusercontent.us/0bf3a835ebb2f01e715e613379cc2dbe269ce51ada33925e922cd70e094e9452/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970655363726970742d3331373843363f7374796c653d666f722d7468652d6261646765266c6f676f3d74797065736372697074)
+
+---
+
+## Frontend
+
+[](#frontend)
+
+[![Flutter](https://camo.githubusercontent.us/54b387bc3b7f91507ca58d76418373ba35102fe22bcc8aa57fca11a1a9880537/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466c75747465722d3032353639423f7374796c653d666f722d7468652d6261646765266c6f676f3d666c7574746572)](https://camo.githubusercontent.us/54b387bc3b7f91507ca58d76418373ba35102fe22bcc8aa57fca11a1a9880537/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466c75747465722d3032353639423f7374796c653d666f722d7468652d6261646765266c6f676f3d666c7574746572)
+
+[![React](https://camo.githubusercontent.us/6c2471636a0db3dbdf111d9b17865d0b71a4c880931b3c7e463645dfd3ae3130/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3631444146423f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374)](https://camo.githubusercontent.us/6c2471636a0db3dbdf111d9b17865d0b71a4c880931b3c7e463645dfd3ae3130/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3631444146423f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374)
+
+[![Next.js](https://camo.githubusercontent.us/c6eeb194c5f5f1a40e469139fd60dbef2eb5966322f0a4e091efd32e3614f5ae/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6578742e6a732d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d6e657874646f746a73)](https://camo.githubusercontent.us/c6eeb194c5f5f1a40e469139fd60dbef2eb5966322f0a4e091efd32e3614f5ae/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6578742e6a732d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d6e657874646f746a73)
+
+---
+
+## Backend
+
+[](#backend)
+
+[![FastAPI](https://camo.githubusercontent.us/d72761eaf9adccefac137c05f03bd4d71f50576b7e08a7b099f481af3bf1e30a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466173744150492d3030393638383f7374796c653d666f722d7468652d6261646765266c6f676f3d66617374617069)](https://camo.githubusercontent.us/d72761eaf9adccefac137c05f03bd4d71f50576b7e08a7b099f481af3bf1e30a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466173744150492d3030393638383f7374796c653d666f722d7468652d6261646765266c6f676f3d66617374617069)
+
+[![Node.js](https://camo.githubusercontent.us/66d917078e574c1ab6a2e91ad0691c152456fbc1b219799f64e0e82306824ef2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f64652e6a732d3333393933333f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f64652e6a73)](https://camo.githubusercontent.us/66d917078e574c1ab6a2e91ad0691c152456fbc1b219799f64e0e82306824ef2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f64652e6a732d3333393933333f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f64652e6a73)
+
+---
+
+## Database
+
+[](#database)
+
+[![PostgreSQL](https://camo.githubusercontent.us/cfee7e6c6945ede5ca667043cfcc63efe6a93c413ce61d45d183c0ecf08be352/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506f737467726553514c2d3431363945313f7374796c653d666f722d7468652d6261646765266c6f676f3d706f737467726573716c)](https://camo.githubusercontent.us/cfee7e6c6945ede5ca667043cfcc63efe6a93c413ce61d45d183c0ecf08be352/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506f737467726553514c2d3431363945313f7374796c653d666f722d7468652d6261646765266c6f676f3d706f737467726573716c)
+
+[![Supabase](https://camo.githubusercontent.us/7fe6ff7a7509b0e2769a79fd2e004fd246779e27011087289cea856ecbe2b49f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53757061626173652d3345434638453f7374796c653d666f722d7468652d6261646765266c6f676f3d7375706162617365)](https://camo.githubusercontent.us/7fe6ff7a7509b0e2769a79fd2e004fd246779e27011087289cea856ecbe2b49f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53757061626173652d3345434638453f7374796c653d666f722d7468652d6261646765266c6f676f3d7375706162617365)
+
+[![Firebase](https://camo.githubusercontent.us/486120e2d088855656015b19b82289cb3b9fd390ff4b3ae397ac8bef3b53933c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46697265626173652d4646434132383f7374796c653d666f722d7468652d6261646765266c6f676f3d6669726562617365)](https://camo.githubusercontent.us/486120e2d088855656015b19b82289cb3b9fd390ff4b3ae397ac8bef3b53933c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46697265626173652d4646434132383f7374796c653d666f722d7468652d6261646765266c6f676f3d6669726562617365)
+
+---
+
+## DevOps
+
+[](#devops)
+
+[![GitHub Actions](https://camo.githubusercontent.us/7f6b73a3f0b9d08ab49185cbc67b72a27679605bfd16dc8a4c42265020affe29/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875625f416374696f6e732d3230383846463f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562616374696f6e73)](https://camo.githubusercontent.us/7f6b73a3f0b9d08ab49185cbc67b72a27679605bfd16dc8a4c42265020affe29/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875625f416374696f6e732d3230383846463f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562616374696f6en73)
+
+[![Vercel](https://camo.githubusercontent.us/4a41a160ed08fbc87907929bb42f15ea927f15c1eaf050deb0949f5304b21198/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f56657263656c2d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d76657263656c)](https://camo.githubusercontent.us/4a41a160ed08fbc87907929bb42f15ea927f15c1eaf050deb0949f5304b21198/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f56657263656c2d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d76657263656c)
+
+---
+
+# 📊 GitHub Statistics
+
+[](#-github-statistics)
+
+[![](https://camo.githubusercontent.us/39bbadfce732d30ae5aadf3b8f2b8455f7b354031912ac2f78391c7959875c1b/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d6f757270766568656e73686f756c646172646534322673686f775f69636f6e733d74727565267468656d653d746f6b796f6e69676874)](https://camo.githubusercontent.us/39bbadfce732d30ae5aadf3b8f2b8455f7b354031912ac2f78391c7959875c1b/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d6f757270766568656e73686f756c646172646534322673686f775f69636f6e733d74727565267468656d653d746f6b796f6e69676874)
+
+[![](https://camo.githubusercontent.us/33e1204fc8db5876aca11d1413fff9830a05d9ea8face9f97b94b29b2c48cb59/68747470733a2f2f6769746875622d726561646d652d73747265616b2d73746174732e6865726f6b756170702e636f6d2f3f757365726f757270766568656e73686f756c64617264653432267468656d653d746f6b796f6e69676874)](https://camo.githubusercontent.us/33e1204fc8db5876aca11d1413fff9830a05d9ea8face9f97b94b29b2c48cb59/68747470733a2f2f6769746875622d726561646d652d73747265616b2d73746174732e6865726f6b756170702e636f6d2f3f757365726f757270766568656e73686f756c64617264653432267468656d653d746f6b796f6e69676874)
+
+[![](https://camo.githubusercontent.us/8ada81587e0df6f1d6d542ec1f13fd18d2d54c3697054ff4f548994dc051e29e/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170692f746f702d6c616e67732f3f757365726e616d653d6f757270766568656e73686f756c64617264653432266c61796f75743d636f6d70616374267468656d653d746f6b796f6e69676874)](https://camo.githubusercontent.us/8ada81587e0df6f1d6d542ec1f13fd18d2d54c3697054ff4f548994dc051e29e/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170692f746f702d6c616e67732f3f757365726e616d653d6f757270766568656e73686f756c64617264653432266c61796f75743d636f6d70616374267468656d653d746f6b796f6e69676874)
+
+---
+
+# 🏆 Achievements
+
+[](#-achievements)
+
+- 🥋 Martial Arts Training
+- 🤖 AI Development
+- 💻 Open Source Contributor
+- 🚀 Project Launches
+- 🎓 Continuous Learning
+
+---
+
+# 🎯 Fun Facts
+
+[](#-fun-facts)
+
+- 🎮 Gaming enthusiast
+- 🤖 AI technology lover
+- 🚀 Always building something new
+- ☁️ Cloud computing fan
+- 📱 App development lover
+
+---
+
+# 📫 Connect With Me
+
+[](#-connect-with-me)
+
+### GitHub
+
+[](#github)
+
+[https://github.com/purveshnileshbhadale](https://github.com/purveshnileshbhadale)
+
+### LinkedIn
+
+[](#linkedin)
+
+[https://linkedin.com/in/purveshnileshbhadale](https://linkedin.com/in/purveshnileshbhadale)
+
+### Portfolio
+
+[](#portfolio)
+
+[Your Portfolio Link](https://your-portfolio.com)
+
+### Twitter
+
+[](#twitter)
+
+[X.com](https://x.com/yourhandle)
+
+---
+
+# 💬 Quote
+
+[](#-quote)
+
+> “The only way to learn a new programming language is by writing programs in it.” — `Purvesh Bhadale`
+
+---
+
+## 🚀 About My Work
+
+[](#-about-my-work)
+
+Building creative software solutions and exploring the intersection of AI and user experience.
+
+⭐ Thanks for visiting my profile!
