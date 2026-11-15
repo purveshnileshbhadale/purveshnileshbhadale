@@ -599,4 +599,33 @@ AI Content Creator is a workflow automation system that leverages artificial int
 
 ---
 
+<!-- Wave Animation Section -->
+<div style="position: relative; width: 100%; overflow: hidden; margin: 2rem 0;">
+  <svg viewBox="0 0 1000 100" style="position: absolute; bottom: 0; width: 100%; height: 100px;">
+    <path d="M0,100 Q500,75 1000,100 L1000,0 Z" fill="url(#wave-gradient)" />
+    <defs>
+      <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#6366f1;stop-opacity=1" />
+        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity=1" />
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<script>
+  // Wave animation - create subtle floating effect
+  document.addEventListener('DOMContentLoaded', function() {
+    const wave = document.querySelector('svg path');
+    if (wave) {
+      let offset = 0;
+      function animateWave() {
+        offset = (offset + 0.5) % 1000;
+        wave.setAttribute('d', `M0,100 Q${500 + offset * 0.5},75 ${1000 + offset},100 L1000,0 Z`);
+        requestAnimationFrame(animateWave);
+      }
+      animateWave();
+    }
+  });
+</script>
+
 ⭐ **Thanks for visiting my profile!** Let's build something amazing together.
